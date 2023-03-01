@@ -29,6 +29,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Registry;
 import org.bukkit.Server;
 import org.bukkit.StructureType;
 import org.bukkit.Tag;
@@ -49,10 +50,10 @@ import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
-import org.bukkit.craftbukkit.v1_18_R2.block.data.CraftBlockData;
-import org.bukkit.craftbukkit.v1_18_R2.inventory.CraftItemFactory;
-import org.bukkit.craftbukkit.v1_18_R2.util.CraftMagicNumbers;
-import org.bukkit.craftbukkit.v1_18_R2.util.Versioning;
+import org.bukkit.craftbukkit.v1_19_R2.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_19_R2.inventory.CraftItemFactory;
+import org.bukkit.craftbukkit.v1_19_R2.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_19_R2.util.Versioning;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.SpawnCategory;
@@ -73,6 +74,7 @@ import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.messaging.Messenger;
 import org.bukkit.potion.PotionBrewer;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.structure.StructureManager;
 import org.bukkit.util.CachedServerIcon;
@@ -378,6 +380,11 @@ public class PseudoServer implements Server {
 		throw new NotImplementedException();
 	}
 
+	@Override
+	public boolean isTickingWorlds() {
+		return false;
+	}
+
 	@Nullable
 	@Override
 	public World createWorld(@Nonnull final WorldCreator worldCreator) {
@@ -530,6 +537,16 @@ public class PseudoServer implements Server {
 
 	@Override
 	public void setSpawnRadius(final int i) {
+		throw new NotImplementedException();
+	}
+
+	@Override
+	public boolean shouldSendChatPreviews() {
+		throw new NotImplementedException();
+	}
+
+	@Override
+	public boolean isEnforcingSecureProfiles() {
 		throw new NotImplementedException();
 	}
 
@@ -739,6 +756,11 @@ public class PseudoServer implements Server {
 	}
 
 	@Override
+	public int getMaxChainedNeighborUpdates() {
+		throw new NotImplementedException();
+	}
+
+	@Override
 	public int getMonsterSpawnLimit() {
 		throw new NotImplementedException();
 	}
@@ -811,6 +833,11 @@ public class PseudoServer implements Server {
 	@Nonnull
 	@Override
 	public ScoreboardManager getScoreboardManager() {
+		throw new NotImplementedException();
+	}
+
+	@Override
+	public @NotNull Criteria getScoreboardCriteria(@NotNull String name) {
 		throw new NotImplementedException();
 	}
 
@@ -972,6 +999,12 @@ public class PseudoServer implements Server {
 
 	@Nonnull
 	@Override
+	public <T extends Keyed> Registry<T> getRegistry(@NotNull Class<T> tClass) {
+		throw new NotImplementedException();
+	}
+
+	@Nonnull
+	@Override
 	public Spigot spigot() {
 		throw new NotImplementedException();
 	}
@@ -995,6 +1028,11 @@ public class PseudoServer implements Server {
 	@Override
 	public String getPermissionMessage() {
 		throw new NotImplementedException();
+	}
+
+	@Override
+	public @NotNull Component permissionMessage() {
+		return null;
 	}
 
 	@Nonnull
